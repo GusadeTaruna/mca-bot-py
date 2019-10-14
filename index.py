@@ -6,7 +6,8 @@ import datetime
 import calendar
 
 app = Flask(__name__)
-log = app.logger
+if __name__ == '__main__':
+    app.run()
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -25,5 +26,3 @@ def webhook():
     return make_response(jsonify({"speech": res}))
 
 
-if __name__ == '__main__':
-    app.run()
