@@ -16,13 +16,13 @@ def webhook():
     """
     req = request.get_json(silent=True, force=True)
     try:
-        action = req.get('result').get('action')
+        action = req.get('queryResult').get('action')
     except AttributeError:
         return 'json error'
 
     if action == 'percakpan':
         res = 'Webnya mau'
 
-    return make_response(jsonify({"speech": res}))
+    return make_response(jsonify({"fulfillmentText": res}))
 
 
